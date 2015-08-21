@@ -119,42 +119,12 @@ public struct JFIFSegment :CustomStringConvertible {
                 bytes = data.bytes.advancedBy(2)
                 length = 0
                 next = Data(data: data, offset: 2)
-            case .APP0:
+            case .APP0, .APP1, .APP2, .APP13, .APP14:
                 bytes = data.bytes.advancedBy(4)
-                // JFXX0
                 let s1 = data.bytes[2]
                 let s2 = data.bytes[3]
                 length = Int(s1) * 256 + Int(s2) - 2
                 next = Data(data: data, offset: 4 + length)
-            case .APP1:
-                bytes = data.bytes.advancedBy(4)
-                // JFXX0
-                let s1 = data.bytes[2]
-                let s2 = data.bytes[3]
-                length = Int(s1) * 256 + Int(s2) - 2
-                next = Data(data: data, offset: 4 + length)
-            case .APP2:
-                bytes = data.bytes.advancedBy(4)
-                // JFXX0
-                let s1 = data.bytes[2]
-                let s2 = data.bytes[3]
-                length = Int(s1) * 256 + Int(s2) - 2
-                next = Data(data: data, offset: 4 + length)
-            case .APP13:
-                bytes = data.bytes.advancedBy(4)
-                // JFXX0
-                let s1 = data.bytes[2]
-                let s2 = data.bytes[3]
-                length = Int(s1) * 256 + Int(s2) - 2
-                next = Data(data: data, offset: 4 + length)
-            case .APP14:
-                bytes = data.bytes.advancedBy(4)
-                // JFXX0
-                let s1 = data.bytes[2]
-                let s2 = data.bytes[3]
-                length = Int(s1) * 256 + Int(s2) - 2
-                next = Data(data: data, offset: 4 + length)
-                
             case .SOS:
                 bytes = data.bytes.advancedBy(2)
                 length = 0
@@ -163,13 +133,7 @@ public struct JFIFSegment :CustomStringConvertible {
                 bytes = data.bytes.advancedBy(2)
                 length = 0
                 next = nil
-            case .SOF0:
-                bytes = data.bytes.advancedBy(4)
-                let s1 = data.bytes[2]
-                let s2 = data.bytes[3]
-                length = Int(s1) * 256 + Int(s2) - 2
-                next = Data(data: data, offset: 4 + length)
-            case .SOF2:
+            case .SOF0, .SOF2:
                 bytes = data.bytes.advancedBy(4)
                 let s1 = data.bytes[2]
                 let s2 = data.bytes[3]
@@ -193,35 +157,7 @@ public struct JFIFSegment :CustomStringConvertible {
                 let s2 = data.bytes[3]
                 length = Int(s1) * 256 + Int(s2) - 2
                 next = Data(data: data, offset: 4 + length)
-            case .RST0:
-                bytes = data.bytes.advancedBy(2)
-                length = 0
-                next = Data(data: data, offset: 2)
-            case .RST1:
-                bytes = data.bytes.advancedBy(2)
-                length = 0
-                next = Data(data: data, offset: 2)
-            case .RST2:
-                bytes = data.bytes.advancedBy(2)
-                length = 0
-                next = Data(data: data, offset: 2)
-            case .RST3:
-                bytes = data.bytes.advancedBy(2)
-                length = 0
-                next = Data(data: data, offset: 2)
-            case .RST4:
-                bytes = data.bytes.advancedBy(2)
-                length = 0
-                next = Data(data: data, offset: 2)
-            case .RST5:
-                bytes = data.bytes.advancedBy(2)
-                length = 0
-                next = Data(data: data, offset: 2)
-            case .RST6:
-                bytes = data.bytes.advancedBy(2)
-                length = 0
-                next = Data(data: data, offset: 2)
-            case .RST7:
+            case .RST0, .RST1, .RST2, .RST3, .RST4, .RST5, .RST6, .RST7:
                 bytes = data.bytes.advancedBy(2)
                 length = 0
                 next = Data(data: data, offset: 2)
