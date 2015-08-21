@@ -176,8 +176,9 @@ public struct JFIFSegment :CustomStringConvertible {
     
     public var description :String {
         get {
-            let nextString = next == nil ? "⍵" : "⚛"
-            return "JFIFSegment(type:\(type.description), size:\(length) next:\(nextString))"
+            let nextString = next == nil ? "•" : "⠒"
+            let lengthString = length == 0 ? "" : length > 1000 ? "\(Double(length)/1000) kB, " : "\(length) bytes, "
+            return "JFIFSegment(\(type.description), \(lengthString)\(nextString))"
         }
     }
 }
