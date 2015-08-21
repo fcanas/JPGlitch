@@ -14,14 +14,14 @@ public struct Data {
 }
 
 public enum Marker :UInt8, CustomStringConvertible {
-    case SOI  = 0xD8
-    case APP0 = 0xE0
-    case APP1 = 0xE1
-    case APP2 = 0xE2
+    case SOI   = 0xD8
+    case APP0  = 0xE0
+    case APP1  = 0xE1
+    case APP2  = 0xE2
     case APP13 = 0xED
     case APP14 = 0xEE
-    case SOS  = 0xDA
-    case EOI  = 0xD9
+    case SOS   = 0xDA
+    case EOI   = 0xD9
     
     case SOF0 = 0xC0
     case SOF2 = 0xC2
